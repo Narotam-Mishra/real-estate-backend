@@ -1,0 +1,24 @@
+{
+  "name": "real-estate-backend",
+  "version": "1.0.0",
+  "description": "A real estate backend application built using Express.js. It features user authentication with JSON Web Tokens (JWT) and data management with MongoDB, facilitated through Prisma. The application also includes real-time chat functionality powered by Socket.io.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
