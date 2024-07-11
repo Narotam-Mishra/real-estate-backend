@@ -6,6 +6,9 @@ import authRoute from './routes/authRoutes.js'
 
 const app = express();
 
+// to handle JSON data
+app.use(express.json())
+
 app.use('/api/posts', postRoute);
 app.use('/api/auth', authRoute);
 

@@ -5,6 +5,10 @@
 
 ```npm install && npm start```
 
+### Sync MongoDB with prisma
+
+```npx prisma db push```
+
 ### Database Connection
 1. Import connectDB.js from db
 2. Invoke in start()
