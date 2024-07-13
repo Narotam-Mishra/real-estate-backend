@@ -4,7 +4,13 @@ import postRoute from './routes/postRoutes.js'
 import authRoute from './routes/authRoutes.js'
 import cookieParser from "cookie-parser";
 import evar from 'dotenv';
+import cors from 'cors';
+
 const app = express();
+
+// CORs resolution
+// credentials: true will allows us to send cookies to client side
+app.use(cors({ origin: process.env.CLIENT_URL, credential: true }));
 
 // configure environment variables
 evar.config();
