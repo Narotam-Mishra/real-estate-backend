@@ -10,7 +10,8 @@ const app = express();
 
 // CORs resolution
 // credentials: true will allows us to send cookies to client side
-app.use(cors({ origin: process.env.CLIENT_URL, credential: true }));
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+
 
 // configure environment variables
 evar.config();
