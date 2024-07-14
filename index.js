@@ -2,6 +2,7 @@
 import express from "express";
 import postRoute from './routes/postRoutes.js'
 import authRoute from './routes/authRoutes.js'
+import testRoute from './routes/testRoutes.js'
 import cookieParser from "cookie-parser";
 import evar from 'dotenv';
 import cors from 'cors';
@@ -24,6 +25,7 @@ app.use(cookieParser())
 
 app.use('/api/posts', postRoute);
 app.use('/api/auth', authRoute);
+app.use('/api/test', testRoute);
 
 console.log("test");
 
