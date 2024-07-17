@@ -26,3 +26,5 @@
 - savedPost
 - chat 
 - message
+
+#### Expressjs middlware allow us to intercept any process to make youe verification and continue that process
