@@ -1,27 +1,15 @@
 
 import express from 'express'
+import { verifyToken } from '../middleware/verifyToken.js';
+import { addPost, deletePost, getPostById, getPosts, updatePost } from '../controllers/postController.js';
 
 const router = express.Router()
 
-// router.get('/test', (req, res) => {
-//     console.log('post Router works!!');
-//     res.send('post Router works!!')
-// })
-
-// router.post('/test', (req, res) => {
-//     console.log('post Router works!!');
-//     res.send('post Router works!!')
-// })
-
-// router.put('/test', (req, res) => {
-//     console.log('post Router works!!');
-//     res.send('post Router works!!')
-// })
-
-// router.delete('/test', (req, res) => {
-//     console.log('post Router works!!');
-//     res.send('post Router works!!')
-// })
+router.get('/', getPosts)
+router.get('/:id', getPostById)
+router.post('/', verifyToken, addPost)
+router.put('/:id', verifyToken, updatePost)
+router.delete('/:id', verifyToken, deletePost)
 
 
 export default router;
