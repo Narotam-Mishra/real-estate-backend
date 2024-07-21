@@ -1,5 +1,6 @@
 
 import prisma from "../lib/prisma.js";
+import jwt from "jsonwebtoken";
 
 export const getPosts = async (req, res) => {
     const query = req.query;
@@ -43,7 +44,32 @@ export const getPostById = async (req, res) => {
                 }
             }
         })
-        res.status(200).json(singlePost)
+
+        //only logged user is allowed to save a post 
+        let userId;
+        const token = req.cookies?.token
+        if(!token){
+            userId = null;
+        }else{
+            jwt.verify(token, process.env.JWT_SECRET_KEY, async(err, payload) => {
+                if(err){
+                    userId = null;
+                }else{
+                    userId = payload.id;
+                }
+            });
+        }
+
+        const saved = await prisma.savedPost.findUnique({
+            where: {
+                userId_postId: {
+                    postId: id,
+                    userId,
+                },
+            },
+        });
+
+        res.status(200).json({ ...singlePost, isSaved: saved ? true : false });
     } catch (error) {
         console.log("Error while fetching posts:", error)
         res.status(500).json({ message: "Failed to get post by Id" })
