@@ -4,6 +4,8 @@ import postRoute from './routes/postRoutes.js'
 import authRoute from './routes/authRoutes.js'
 import testRoute from './routes/testRoutes.js'
 import userRoute from './routes/userRoutes.js'
+import chatRoute from './routes/chatRoutes.js'
+import messageRoute from './routes/messageRoute.js'
 import cookieParser from "cookie-parser";
 import evar from 'dotenv';
 import cors from 'cors';
@@ -28,6 +30,8 @@ app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/test', testRoute);
+app.use('/api/chats', chatRoute);
+app.use('/api/messages', messageRoute);
 
 console.log("test");
 
