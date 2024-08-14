@@ -9,8 +9,24 @@ import messageRoute from './routes/messageRoute.js'
 import cookieParser from "cookie-parser";
 import evar from 'dotenv';
 import cors from 'cors';
+import { Server } from "socket.io";
 
 const app = express();
+
+const io = new Server({
+    cors: {
+        origin: "http://localhost:5173/"
+    },
+});
+
+io.on("connection", (socket) => {
+    // console.log("socket object:", socket.id);
+    socket.on("test", (data) => {
+        console.log("Test socket",data)
+    })
+})
+
+io.listen("4241")
 
 // CORs resolution
 // credentials: true will allows us to send cookies to client side
@@ -33,7 +49,7 @@ app.use('/api/test', testRoute);
 app.use('/api/chats', chatRoute);
 app.use('/api/messages', messageRoute);
 
-console.log("test");
+// console.log("test");
 
 const portno = 8800
 app.listen(portno, () => {
