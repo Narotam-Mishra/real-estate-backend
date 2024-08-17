@@ -28,3 +28,8 @@
 - message
 
 #### Note - Expressjs middlware allow us to intercept any process to make youe verification and continue that process
+
+### using console-ninja
+
+#### command
+```console-ninja node --watch app.js```
