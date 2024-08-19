@@ -1,9 +1,8 @@
 
 import { Server } from "socket.io";
-import { getUsers } from "../controllers/userController.js";
 
 const io = new Server({
-    cors: "http://localhost:5173/"
+    cors: "http://localhost:5173"
 })
 
 let onlineUsers = []
@@ -26,18 +25,18 @@ const getUser = (userId) => {
 io.on("connection", (socket) => {
     socket.on("newUser", (userId) => {
         addUser(userId, socket.id);
-        console.log("List of Online Users:",onlineUsers);
+        // console.log("List of Online Users:",onlineUsers);
     });
 
     socket.on("sendMessage", ({ receiverId, data }) => {
         // console.log("Message data:",data)
-        const receiver = getUsers(receiverId);
+        const receiver = getUser(receiverId);
         io.to(receiver.socketId).emit("getMessage", data)
     })
 
     socket.on("disconnect", () => {
         removeUser(socket.id);
-    })
-})
+    });
+});
 
 io.listen("4341")
